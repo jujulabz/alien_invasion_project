@@ -11,4 +11,4 @@ class Settings:
      
         self.ship_speed = 1.5
         
-        self.ship_turbo_speed = 4.0
+        self.ship_turbo_speed = 6.0

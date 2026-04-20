@@ -32,14 +32,6 @@ class AlienInvasion:
             self.ship.update()
             self._update_screen()
             self.clock.tick(60)
-        
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    sys.exit()
-                
-          
-            self.screen.fill(self.settings.bg_color)
-            self.ship.blitme()
          
             
     def _check_events(self):
@@ -58,6 +50,10 @@ class AlienInvasion:
             self.ship.moving_right = True
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = True
+        elif event.key == pygame.K_UP:
+            self.ship.moving_up = True
+        elif event.key == pygame.K_DOWN:
+            self.ship.moving_down = True
         elif event.key == pygame.K_q:
             sys.exit()
         elif event.key == pygame.K_LSHIFT:
@@ -71,18 +67,22 @@ class AlienInvasion:
             self.ship.moving_right = False
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = False
+        elif event.key == pygame.K_UP:
+            self.ship.moving_up = False
+        elif event.key == pygame.K_DOWN:
+            self.ship.moving_down = False
         elif event.key == pygame.K_LSHIFT:
-            self.ship.turbo = False
+            self.ship.moving_turbo = False
 
 
     def _update_screen(self):
         """Update images on the screen and flip to the new screen."""
         self.screen.fill(self.settings.bg_color)
         self.ship.blitme()
-        
+        self.clock.tick(60)
         
         pygame.display.flip()
-        self.clock.tick(60)
+    
 
 if __name__ == '__main__':
 
